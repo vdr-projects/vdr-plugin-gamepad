@@ -1,0 +1,82 @@
+This is a plugin for the Video Disk Recorder (VDR).
+
+Written by:                  Andreas Hagmann <vdr@hagmann.name>
+
+Project's homepage:          http://projects.vdr-developer.org/projects/plg-gamepad
+
+Latest version available at: http://www.vdr-projects.org
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+See the file COPYING for more information.
+
+Installation
+------------
+make make install
+or
+dpkg-buildpackage dpkg -i
+
+Usage
+-----
+1. Install the plugin.
+2. Configure the joystick device in setup menu.
+3. Enable testmode in the setup menu. This will print the generic
+   event ID of pressed keys on OSD.
+4. Edit keymap.txt in the plugin configuration directory to your
+   needs.
+5. Restart VDR
+
+
+SVDRP
+-----
+
+The plugin can be enabled and disabled via SVDRP commands
+(ENABLE/DISABLE). This may be useful to close the joystick device and
+allow another frontend (e.g. XBMC) to use it.
+
+
+keymap.txt
+----------
+
+The keymap.txt file in the plugins configuration directory allows
+to specify the following settings for each key:
+- VDR_KEY Supported keys are
+    Down Up Menu Ok Back Left Right Red Green Yellow Blue Info
+    PlayPause Play Pause Stop Record FastFwd FastRew Next Prev Power
+    ChanUp ChanDn ChanPrev VolUp VolDn Mute Audio Subtitles Schedule
+    Channels Timers Recordings Setup Commands User0 User1 User2 User3
+    User4 User5 User6 User7 User8 User9
+- REPEAT The repeat intervall in ms. To disable autorepeat set this
+  to 0.
+- HOLD The time in ms between the key press and the start of the
+  auto repeat mechanism.
+
+
+How it works
+------------
+The plugin uses the kernel joystick API [1] to get events from
+joystick devices.
+It constists of two threads. The first one opens a kernel joystick
+device and maps buttons and axis movements to generic events. The
+event ID is calculated as follows:
+    - If the event is a button, the generic event ID equalls the
+      button number.
+    - If the event is a axis movement, the generic event ID is
+      calculated as OFFSET+2*AXIS_NUMBER+DIR. Where OFFSEt is the
+      maximum number of supported buttons (16) and DIR is ether 0
+      or 1 and depends on the axis movement direction.
+When a button/axis is pressed or released the generic event ID is
+reported to the second thread. This one maps the generic events to
+VDR keys (as specified in keymap.txt) and handles autorepeated
+key presses.
+
+
+BUGS/TODO
+---------
+Current infos are available at the project homepage.
+
+Links
+-----
+[1] https://www.kernel.org/doc/Documentation/input/joystick-api.txt
