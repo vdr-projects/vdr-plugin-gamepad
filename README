@@ -12,11 +12,12 @@ the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version.
 See the file COPYING for more information.
 
+
 Installation
 ------------
-make make install
-or
-dpkg-buildpackage dpkg -i
+make
+make install
+
 
 Usage
 -----
@@ -31,15 +32,13 @@ Usage
 
 SVDRP
 -----
-
 The plugin can be enabled and disabled via SVDRP commands
 (ENABLE/DISABLE). This may be useful to close the joystick device and
-allow another frontend (e.g. XBMC) to use it.
+allows another frontend (e.g. XBMC) to use it.
 
 
 keymap.txt
 ----------
-
 The keymap.txt file in the plugins configuration directory allows
 to specify the following settings for each key:
 - VDR_KEY Supported keys are
@@ -48,7 +47,7 @@ to specify the following settings for each key:
     ChanUp ChanDn ChanPrev VolUp VolDn Mute Audio Subtitles Schedule
     Channels Timers Recordings Setup Commands User0 User1 User2 User3
     User4 User5 User6 User7 User8 User9
-- REPEAT The repeat intervall in ms. To disable autorepeat set this
+- REPEAT The repeat interval in ms. To disable autorepeat set this
   to 0.
 - HOLD The time in ms between the key press and the start of the
   auto repeat mechanism.
@@ -58,13 +57,13 @@ How it works
 ------------
 The plugin uses the kernel joystick API [1] to get events from
 joystick devices.
-It constists of two threads. The first one opens a kernel joystick
+It consists of two threads. The first one opens a kernel joystick
 device and maps buttons and axis movements to generic events. The
 event ID is calculated as follows:
-    - If the event is a button, the generic event ID equalls the
+    - If the event is a button, the generic event ID equals the
       button number.
     - If the event is a axis movement, the generic event ID is
-      calculated as OFFSET+2*AXIS_NUMBER+DIR. Where OFFSEt is the
+      calculated as OFFSET+2*AXIS_NUMBER+DIR. Where OFFSET is the
       maximum number of supported buttons (16) and DIR is ether 0
       or 1 and depends on the axis movement direction.
 When a button/axis is pressed or released the generic event ID is
