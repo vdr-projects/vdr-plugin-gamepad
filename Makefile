@@ -40,7 +40,7 @@ APIVERSION = $(call PKGCFG,apiversion)
 ### The name of the distribution archive:
 
 ARCHIVE = $(PLUGIN)-$(VERSION)
-PACKAGE = vdr-$(ARCHIVE)
+PACKAGE = vdr-plugin-$(ARCHIVE)
 
 ### The name of the shared object file:
 
