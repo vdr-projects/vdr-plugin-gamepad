@@ -9,7 +9,7 @@
 #include "gamepad_process_keys_thread.h"
 #include "gamepad_setup.h"
 
-static const char *VERSION        = "0.0.1";
+static const char *VERSION        = "0.0.2-dev";
 
 class cPluginGamepad : public cPlugin {
 private:
