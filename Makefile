@@ -21,7 +21,7 @@ LIBDIR = $(call PKGCFG,libdir)
 LOCDIR = $(call PKGCFG,locdir)
 PLGCFG = $(call PKGCFG,plgcfg)
 VDRCONFDIR = $(call PKGCFG,configdir)
-PLGRESDIR = $(call PKGCFG,resdir)/plugins/$(PLUGIN)
+PLGCONFDIR = $(call PKGCFG,configdir)/plugins/$(PLUGIN)
 TMPDIR ?= /tmp
 
 ### The compiler options:
@@ -109,8 +109,8 @@ install-lib: $(SOFILE)
 	install -D $^ $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)
 
 install-config:
-	mkdir -p $(DESTDIR)$(PLGRESDIR)
-	cp keymap.txt $(DESTDIR)$(PLGRESDIR)/keymap.txt
+	mkdir -p $(DESTDIR)$(PLGCONFDIR)
+	cp keymap.txt $(DESTDIR)$(PLGCONFDIR)/keymap.txt
 
 
 install: install-lib install-i18n install-config
