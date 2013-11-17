@@ -29,7 +29,6 @@ public:
   virtual void MainThreadHook(void);
   virtual cString Active(void);
   virtual time_t WakeupTime(void);
-  //virtual const char *MainMenuEntry(void) { return MAINMENUENTRY; }
   virtual cOsdObject *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
   virtual bool SetupParse(const char *Name, const char *Value);
@@ -40,9 +39,7 @@ public:
 
 cPluginGamepad::cPluginGamepad(void) : processKeysThread(NULL)
 {
-  // Initialize any member variables here.
-  // DON'T DO ANYTHING ELSE THAT MAY HAVE SIDE EFFECTS, REQUIRE GLOBAL
-  // VDR OBJECTS TO EXIST OR PRODUCE ANY OUTPUT!
+
 }
 
 cPluginGamepad::~cPluginGamepad()
@@ -71,12 +68,9 @@ bool cPluginGamepad::Initialize(void)
 
 bool cPluginGamepad::Start(void)
 {
-  if (processKeysThread == NULL)
-  {
-    bool ret;
-    ret = processKeysThread->Start();
-    dsyslog("[gamepad] start handler returned %d", ret);
-  }
+  bool ret;
+  ret = processKeysThread->Start();
+  dsyslog("[gamepad] start handler returned %d", ret);
   return true;
 }
 

@@ -8,6 +8,7 @@
 #include "gamepad_handler_thread.h"
 #include <vdr/tools.h>
 #include <vdr/skins.h>
+#include "gamepad_config.h"
 
 cGamepadHandlerThread::cGamepadHandlerThread(cEventFifo *_fifo) : cThread("gamepad_handler")
 {
@@ -17,7 +18,7 @@ cGamepadHandlerThread::cGamepadHandlerThread(cEventFifo *_fifo) : cThread("gamep
 void cGamepadHandlerThread::Action()
 {
     cGamepadHandler gamepad;
-    gamepad.connect("/dev/input/js2");
+    gamepad.connect(gamepadConfig.device);
 
     if (gamepad.ready())
     {
