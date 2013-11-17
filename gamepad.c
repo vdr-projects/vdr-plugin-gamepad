@@ -44,7 +44,10 @@ cPluginGamepad::cPluginGamepad(void) : processKeysThread(NULL)
 
 cPluginGamepad::~cPluginGamepad()
 {
-  // Clean up after yourself!
+  if (processKeysThread != NULL)
+  {
+    delete processKeysThread;
+  }
 }
 
 const char *cPluginGamepad::CommandLineHelp(void)
@@ -78,7 +81,6 @@ void cPluginGamepad::Stop(void)
 {
   if (processKeysThread) {
     processKeysThread->Cancel(10);
-    processKeysThread = NULL;
   }
 }
 
@@ -147,6 +149,7 @@ cString cPluginGamepad::SVDRPCommand(const char *Command, const char *Option, in
 {
   if (strcasecmp(Command, "ENABLE") == 0)
   {
+     Start();
      ReplyCode = 900;
      return "Enabled";
   }
