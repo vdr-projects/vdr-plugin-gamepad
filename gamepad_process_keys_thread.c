@@ -10,6 +10,7 @@
 #include <vdr/tools.h>
 #include <vdr/plugin.h>
 #include "gamepad_config.h"
+#include <ctype.h>
 
 cGamepadProcessKeysThread::cGamepadProcessKeysThread() : handler(NULL), event_queue(NULL)
 {
