@@ -78,6 +78,16 @@ void cGamepadProcessKeysThread::loadKeyMap()
                                         else if (strcmp(token, "Yellow"     ) == 0) vdrKey = kYellow    ;
                                         else if (strcmp(token, "Blue"       ) == 0) vdrKey = kBlue      ;
                                         else if (strcmp(token, "Info"       ) == 0) vdrKey = kInfo      ;
+                                        else if (strcmp(token, "0"          ) == 0) vdrKey = k0         ;
+                                        else if (strcmp(token, "1"          ) == 0) vdrKey = k1         ;
+                                        else if (strcmp(token, "2"          ) == 0) vdrKey = k2         ;
+                                        else if (strcmp(token, "3"          ) == 0) vdrKey = k3         ;
+                                        else if (strcmp(token, "4"          ) == 0) vdrKey = k4         ;
+                                        else if (strcmp(token, "5"          ) == 0) vdrKey = k5         ;
+                                        else if (strcmp(token, "6"          ) == 0) vdrKey = k6         ;
+                                        else if (strcmp(token, "7"          ) == 0) vdrKey = k7         ;
+                                        else if (strcmp(token, "8"          ) == 0) vdrKey = k8         ;
+                                        else if (strcmp(token, "9"          ) == 0) vdrKey = k9         ;
                                         else if (strcmp(token, "PlayPause"  ) == 0) vdrKey = kPlayPause ;
                                         else if (strcmp(token, "Play"       ) == 0) vdrKey = kPlay      ;
                                         else if (strcmp(token, "Pause"      ) == 0) vdrKey = kPause     ;
