@@ -110,7 +110,7 @@ install-lib: $(SOFILE)
 
 install-config:
 	mkdir -p $(DESTDIR)$(PLGCONFDIR)
-	cp keymap.txt $(DESTDIR)$(PLGCONFDIR)/keymap.txt
+	cp -n keymap.txt $(DESTDIR)$(PLGCONFDIR)/keymap.txt
 
 
 install: install-lib install-i18n install-config
