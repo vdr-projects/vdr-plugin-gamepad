@@ -43,7 +43,7 @@ class cGamepadHandler
         generic_event* event(void);
 
         static const int MAX_NUM_BUTTONS = 16;
-        static const int MAX_NUM_AXIS = 6;
+        static const int MAX_NUM_AXIS = 8;
         static const int AXIS_DEAD_ZONE = 15000;
         static const int MAX_KEYS = MAX_NUM_BUTTONS + 2*MAX_NUM_AXIS;
 
